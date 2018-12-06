@@ -28,19 +28,9 @@
             <h3>Welcome to H</h3>
             <p>Bonjour</p>
             <div id="username"></div>
-            <form id='loginForm' class="m-t" role="form" action="/users/login" method="POST" enctype="application/json">
-                <div class="form-group">
-                    <input class="form-control" placeholder="Username" required="" name="username">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="" name="password">
-                </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
-
-                <a href="#"><small>Forgot password?</small></a>
-                <p class="text-muted text-center"><small>Do not have an account?</small></p>
-                <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
-            </form>
+            <a href="/register" class="btn btn-primary block full-width m-b">Register</a>
+            <a href="/login" class="btn btn-primary block full-width m-b">Login</a>
+            <a href="/login/custom" class="btn btn-primary block full-width m-b">Login custom</a>
         </div>
     </div>
 

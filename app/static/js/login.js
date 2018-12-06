@@ -13,8 +13,7 @@ document.getElementById('loginForm').addEventListener("submit", function(e) {
     data.password = form.elements["password"].value;
 
     // Récupération de la taille de l'écran
-    data.height = screen.height;
-    data.width = screen.width;
+    data.size_screen = screen.height + "x" + screen.width;
 
     navigator.geolocation.getCurrenftPosition(
         (position) => {

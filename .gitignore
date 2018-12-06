@@ -102,3 +102,6 @@ env/
 
 # Misc
 _mailinglist
+
+#SQLite
+**/*.db

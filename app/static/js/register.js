@@ -11,14 +11,13 @@ document.getElementById('registerForm').addEventListener("submit", function(e) {
     // Récupération du login et du mot de passse
     data.username = form.elements["username"].value;
     data.password = form.elements["password"].value;
-    data.telephone = form.elements["telephone"].value;
+    data.phone = form.elements["phone"].value;
     data.email = form.elements["email"].value;
 
     // Récupération de la taille de l'écran
-    data.height = screen.height;
-    data.width = screen.width;
+    data.size_screen = screen.height + "x" + screen.width;
 
-    navigator.geolocation.getCurrenftPosition(
+    navigator.geolocation.getCurrentPosition(
         (position) => {
             data.lat = position.coords.latitude;
             data.long = position.coords.longitude;
@@ -32,8 +31,8 @@ document.getElementById('registerForm').addEventListener("submit", function(e) {
     );
 
     request.onload = function() {
-        let resp = JSON.parse(request.responseText);
-        sessionStorage.setItem("token", resp.data.token);
+        // let resp = JSON.parse(request.responseText);
+        // sessionStorage.setItem("token", resp.data.token);
         document.location.href = "/";
     };
 
