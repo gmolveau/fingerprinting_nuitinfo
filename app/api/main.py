@@ -117,7 +117,7 @@ def login_post():
 
     user = User.query.filter(User.username == username).first()
     if user is None:
-        abort(404)
+        abort()
 
     if not user.verify_password(password):
         abort(400)

@@ -29,9 +29,13 @@ document.getElementById('loginForm').addEventListener("submit", function(e) {
     );
 
     request.onload = function() {
-        document.open();
-        document.write(request.responseText);
-        document.close();
+        if (request.status > 200){
+            alert("Error login")
+        }else{
+            document.open();
+            document.write(request.responseText);
+            document.close();
+        }
         // let resp = JSON.parse(request.responseText);
         // sessionStorage.setItem("token", resp.data.token);
         // document.location.href = "/";
