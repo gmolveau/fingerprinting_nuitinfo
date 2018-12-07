@@ -17,18 +17,26 @@ document.getElementById('registerForm').addEventListener("submit", function(e) {
     // Récupération de la taille de l'écran
     data.size_screen = screen.height + "x" + screen.width;
 
-    navigator.geolocation.getCurrentPosition(
-        (position) => {
-            data.lat = position.coords.latitude;
-            data.long = position.coords.longitude;
-            request.open(form.method, form.action);
-            request.setRequestHeader("Content-Type", "application/json");
-            request.send(JSON.stringify(data));
-        }, 
-        (err) => {
-            console.error(err);
-        }
-    );
+    if ( ! navigator.geolocation){
+        data.lat = 47.644795 ;
+        data.long = -2.748394;
+        request.open(form.method, form.action);
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send(JSON.stringify(data));
+    } else{ 
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                data.lat = position.coords.latitude;
+                data.long = position.coords.longitude;
+                request.open(form.method, form.action);
+                request.setRequestHeader("Content-Type", "application/json");
+                request.send(JSON.stringify(data));
+            }, 
+            (err) => {
+                console.error(err);
+            }
+        );
+    }
 
     request.onload = function() {
         // let resp = JSON.parse(request.responseText);
