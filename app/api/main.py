@@ -11,31 +11,18 @@ from ..models.user import User
 
 def get_final_weight(user,language,country,size_screen,os,provider,os_version,browser):
     weight = 0
-    # weight language 25
     if user.language != language:
         weight += 25
-
-    # weight country 20
     if user.country != country:
         weight += 20
-
-    # weight size_screen 15
     if user.size_screen != size_screen:
         weight += 15
-
-    # weight os 15
     if user.os != os:
         weight += 15
-
-    # weight provider 10
     if user.provider != provider:
         weight += 10
-
-    # weight os_version 10
     if user.os_version != os_version:
         weight += 10
-
-    # weight browser 5
     if user.browser != browser:
         weight += 5
     return weight
@@ -78,9 +65,6 @@ def get_hash_global(language, country, size_screen, os_client, provider, os_vers
 
 
 def hash_data(word):
-    '''
-    Take a string and return his sha256 hash
-    '''
     return sha256(word.encode('utf-8')).hexdigest()
 
 
@@ -117,7 +101,7 @@ def login_post():
 
     user = User.query.filter(User.username == username).first()
     if user is None:
-        abort()
+        abort(404)
 
     if not user.verify_password(password):
         abort(400)
@@ -167,7 +151,7 @@ def login_post():
     if final_weight >= 60 :
         abort(403)
     if final_weight >= 30 :
-        return "203"
+        return "SMS validation required"
 
     user.language = language
     user.country = country
@@ -219,7 +203,7 @@ def login_custom_post():
         user.phone
     )
     if hash_global == user.hash_global:
-        return "200"
+        return "success"
 
     final_weight = get_final_weight(
         user,
@@ -251,7 +235,7 @@ def register_post():
     browser = user_agent['user_agent']['family'] + " " + user_agent['user_agent']['major']
     os_client = user_agent['os']['family']
     os_client_version = user_agent['os']['major']
-    country = "FR" # get country from IP or lat/long
+    country = "FR" # TODO : get country from IP or lat/long
 
     hash_global = get_hash_global(
         language,
@@ -282,4 +266,4 @@ def register_post():
     db.session.add(user)
     db.session.commit()
 
-    return "200"
+    return "success"
