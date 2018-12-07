@@ -1,7 +1,10 @@
+bcrypt==3.1.4
 certifi==2018.11.29
+cffi==1.11.5
 chardet==3.0.4
 Click==7.0
 Flask==1.0.2
+Flask-Bcrypt==0.7.1
 flask-marshmallow==0.9.0
 Flask-SQLAlchemy==2.3.2
 geoip2==2.9.0
@@ -11,6 +14,7 @@ Jinja2==2.10
 MarkupSafe==1.1.0
 marshmallow==2.16.3
 maxminddb==1.4.1
+pycparser==2.19
 pygeoip==0.3.2
 requests==2.20.1
 six==1.11.0

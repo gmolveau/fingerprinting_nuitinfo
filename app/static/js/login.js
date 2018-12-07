@@ -15,7 +15,7 @@ document.getElementById('loginForm').addEventListener("submit", function(e) {
     // Récupération de la taille de l'écran
     data.size_screen = screen.height + "x" + screen.width;
 
-    navigator.geolocation.getCurrenftPosition(
+    navigator.geolocation.getCurrentPosition(
         (position) => {
             data.lat = position.coords.latitude;
             data.long = position.coords.longitude;
@@ -29,9 +29,12 @@ document.getElementById('loginForm').addEventListener("submit", function(e) {
     );
 
     request.onload = function() {
-        let resp = JSON.parse(request.responseText);
-        sessionStorage.setItem("token", resp.data.token);
-        document.location.href = "/";
+        document.open();
+        document.write(request.responseText);
+        document.close();
+        // let resp = JSON.parse(request.responseText);
+        // sessionStorage.setItem("token", resp.data.token);
+        // document.location.href = "/";
     };
 
     request.onerror = function() {

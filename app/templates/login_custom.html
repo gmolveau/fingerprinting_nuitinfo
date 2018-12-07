@@ -28,17 +28,49 @@
             <h3>Welcome to H</h3>
             <p>Bonjour</p>
             <div id="username"></div>
-            <form id='loginForm' class="m-t" role="form" action="/login" method="POST" enctype="application/json">
-                <div class="form-group">
-                    <input class="form-control" placeholder="Username" required="" name="username">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="" name="password">
-                </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+            <form id='loginForm' class="m-t" role="form" action="/login/custom" method="POST" enctype="application/json">
 
-                <a href="#"><small>Forgot password?</small></a>
-                <a class="text-muted text-center" href="/register"><small>Do not have an account?</small></a>
+                <div class="form-group">
+                    <span>Username : {{username}}</span>
+                    <input class="form-control" value="{{username}}" placeholder="Language" required="" name="username">
+                </div>
+
+                <div class="form-group">
+                    <span>Language : {{language}}</span>
+                    <input class="form-control" value="{{language}}" placeholder="Language" required="" name="language">
+                </div>
+
+                <div class="form-group">
+                    <span>Country : {{country}}</span>
+                    <input value="{{country}}" class="form-control" placeholder="country" required="" name="country">
+                </div>
+
+                <div class="form-group">
+                    <span>Size screen : {{size_screen}}</span>
+                    <input value="{{size_screen}}" class="form-control" placeholder="size_screen" required="" name="size_screen">
+                </div>
+
+                <div class="form-group">
+                    <span>Os : {{os}}</span>
+                    <input value="{{os}}" class="form-control" placeholder="os" required="" name="os">
+                </div>
+
+                <div class="form-group">
+                    <span>Provider : {{provider}}</span>
+                    <input value="{{provider}}" class="form-control" placeholder="provider" required="" name="provider">
+                </div>
+
+                <div class="form-group">
+                    <span>Os version : {{os_version}}</span>
+                    <input value="{{os_version}}" class="form-control" placeholder="os_version" required="" name="os_version">
+                </div>
+
+                <div class="form-group">
+                    <span>Browser : {{browser}}</span>
+                    <input value="{{browser}}" class="form-control" placeholder="browser" required="" name="browser">
+                </div>
+
+                <button type="submit" class="btn btn-primary block full-width m-b">Test Score</button>
             </form>
             <a href="/" class="btn btn-success block full-width m-b">Home</a>
         </div>
@@ -46,7 +78,7 @@
 
     <script src="{{ url_for('static', filename='js/jquery-3.1.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/login_custom.js') }}"></script>
 
 </body>
 
